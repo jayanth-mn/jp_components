@@ -1,0 +1,49 @@
+/* src/components/Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .header-logo {
+    margin-left: 250px; /* Adjust based on the width of your sidebar */
+  }
+  
+  .header-logo img {
+    height: 40px; /* Adjust size as needed */
+  }
+  
+  .header-nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .header-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .header-link:hover {
+    background-color: #444;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .header-logo {
+      margin-left: 180px; /* Adjust for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header-logo {
+      margin-left: 150px; /* Adjust for very small screens */
+    }
+  }
+  

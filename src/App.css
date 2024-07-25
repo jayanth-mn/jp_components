@@ -1,38 +1,160 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px; /* Default width when expanded */
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar-collapsed {
+  width: 60px; /* Width when collapsed */
+}
+
+.sidebar-expanded {
+  width: 250px; /* Width when expanded */
+}
+
+.sidebar-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.sidebar-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.3s;
+  position: relative; /* Needed for tooltip positioning */
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-item:hover {
+  background-color: #444;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Tooltip styling when collapsed */
+.sidebar-collapsed .sidebar-item::after {
+  content: attr(data-text); /* Use the data-text attribute for tooltip text */
+  position: absolute;
+  left: 100%; /* Position tooltip to the right of the icon */
+  top: 50%;
+  transform: translateX(10px) translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 10; /* Ensure tooltip appears above other elements */
+}
+
+.sidebar-collapsed .sidebar-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Show text only when expanded */
+.sidebar-expanded .sidebar-item-text {
+  display: block;
+}
+
+.sidebar-collapsed .sidebar-item-text {
+  display: none; /* Hide text when collapsed */
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px;
+  background: #222;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-signout {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sidebar-signout span {
+  margin-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 150px; /* Adjust width for tablets */
   }
-  to {
-    transform: rotate(360deg);
+  .sidebar-collapsed {
+    width: 60px; /* Width when collapsed */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 150px; /* Adjust width for very small screens */
+  }
+  .sidebar-collapsed {
+    width: 60px; /* Width when collapsed */
   }
 }
